@@ -1,0 +1,100 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  name          String?
+  passwordHash  String
+  role          UserRole       @default(USER)
+  calculations  Calculation[]
+  quotes        Quote[]
+  companies     Company[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Species {
+  id              String        @id @default(uuid())
+  name            String        @unique
+  baseYield       Float
+  baseCostPerKg   Float
+  co2PerKg        Float
+  calculations    Calculation[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  isActive        Boolean       @default(true)
+}
+
+model Calculation {
+  id            String    @id @default(uuid())
+  userId        String
+  speciesId     String
+  quantity      Float
+  totalCost     Float
+  totalCo2      Float
+  variables     Json      @default("{}")
+  user          User      @relation(fields: [userId], references: [id])
+  species       Species   @relation(fields: [speciesId], references: [id])
+  quoteItems    QuoteItem[]
+  createdAt     DateTime  @default(now())
+}
+
+model Quote {
+  id              String      @id @default(uuid())
+  userId          String
+  companyId       String?
+  status          QuoteStatus @default(DRAFT)
+  totalAmount     Float
+  markupPercent   Float       @default(0)
+  validUntil      DateTime?
+  items           QuoteItem[]
+  user            User        @relation(fields: [userId], references: [id])
+  company         Company?    @relation(fields: [companyId], references: [id])
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model QuoteItem {
+  id              String      @id @default(uuid())
+  quoteId         String
+  calculationId   String
+  quantity        Float
+  unitPrice       Float
+  lineTotal       Float
+  displayOrder    Int         @default(0)
+  quote           Quote       @relation(fields: [quoteId], references: [id])
+  calculation     Calculation @relation(fields: [calculationId], references: [id])
+}
+
+model Company {
+  id                String    @id @default(uuid())
+  userId            String
+  name              String
+  markupPercentage  Float     @default(0)
+  customFields      Json      @default("{}")
+  user              User      @relation(fields: [userId], references: [id])
+  quotes            Quote[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  ACCEPTED
+  REJECTED
+  EXPIRED
+}

@@ -1,0 +1,50 @@
+%%{init: { 
+    'theme': 'base',
+    'themeVariables': {
+        'primaryColor': '#bb86fc',
+        'primaryTextColor': '#fff',
+        'primaryBorderColor': '#9965f4',
+        'lineColor': '#5c5c5c',
+        'secondaryColor': '#03dac6',
+        'tertiaryColor': '#ff7597'
+    }
+}}%%
+
+graph TD
+    subgraph Phase1["Phase 1: MVP (Feb 2025)"]
+        style Phase1 fill:#bb86fc20,stroke:#bb86fc
+        P1_1["React Native Web App"]
+        P1_2["Basic API"]
+        P1_3["PostgreSQL Database"]
+        P1_4["Docker Development"]
+    end
+
+    subgraph Phase2["Phase 2: Mobile Launch (March 2025)"]
+        style Phase2 fill:#03dac620,stroke:#03dac6
+        P2_1["App Store Deployment"]
+        P2_2["Play Store Deployment"]
+        P2_3["User Authentication"]
+        P2_4["Quote Generation"]
+    end
+
+    subgraph Phase3["Phase 3: Monetization (April 2025)"]
+        style Phase3 fill:#ff759720,stroke:#ff7597
+        P3_1["Premium Features"]
+        P3_2["Ad Integration"]
+        P3_3["Subscription System"]
+        P3_4["Analytics Dashboard"]
+    end
+
+    subgraph Phase4["Phase 4: Scale (May 2025+)"]
+        style Phase4 fill:#c792ea20,stroke:#c792ea
+        P4_1["Load Balancing"]
+        P4_2["CDN Integration"]
+        P4_3["Caching Layer"]
+        P4_4["Multiple Regions"]
+    end
+
+    Phase1 --> Phase2
+    Phase2 --> Phase3
+    Phase3 --> Phase4
+
+    classDef default fill:#2a2139,stroke:#bb86fc,color:#fff;

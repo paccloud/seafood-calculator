@@ -1,0 +1,29 @@
+# Project Guidelines for Seafood Calculator
+
+## Security
+- Never read or modify .env files directly
+- Keep credentials out of logs
+- Use environment variables for sensitive data
+- Implement proper authentication
+- Sanitize all user inputs
+
+## Code Style
+- Use TypeScript for all new features
+- Follow error handling in utils/errors.ts
+- Implement proper type checking
+- Use async/await over promises
+- Follow React hooks best practices
+
+## Documentation
+- Update docs when modifying features
+- Keep README.md in sync
+- Document all API endpoints
+- Use JSDoc comments for functions
+- Create ADRs for major decisions
+
+## Testing
+- Maintain 80% test coverage
+- Unit test all calculations
+- Integration test API endpoints
+- E2E test critical flows
+- Performance test shipping calculator

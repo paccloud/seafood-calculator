@@ -1,0 +1,54 @@
+%%{init: { 
+    'theme': 'base',
+    'themeVariables': {
+        'primaryColor': '#bb86fc',
+        'primaryTextColor': '#fff',
+        'primaryBorderColor': '#9965f4',
+        'lineColor': '#5c5c5c',
+        'secondaryColor': '#03dac6',
+        'tertiaryColor': '#ff7597'
+    }
+}}%%
+
+graph TD
+    subgraph MonoRepo["Seafood Calculator Monorepo"]
+        style MonoRepo fill:#bb86fc20,stroke:#bb86fc
+        
+        subgraph Apps["apps/"]
+            style Apps fill:#03dac620,stroke:#03dac6
+            WEB["web/<br/>Next.js app"]
+            MOBILE["mobile/<br/>Expo app"]
+            API["api/<br/>Express + Prisma"]
+        end
+
+        subgraph Packages["packages/"]
+            style Packages fill:#ff759720,stroke:#ff7597
+            UI["ui/<br/>shadcn + tailwind"]
+            CALC["calculator/<br/>Core logic"]
+            DB["database/<br/>Prisma client"]
+            TYPES["types/<br/>Shared types"]
+        end
+
+        subgraph Config["Project Config"]
+            style Config fill:#c792ea20,stroke:#c792ea
+            TURBO["turbo.json"]
+            DOCKER["docker-compose.yml"]
+            ENV["Environment files"]
+            PRISMA["Prisma schema"]
+        end
+    end
+
+    subgraph Data["Data Layer"]
+        style Data fill:#03dac620,stroke:#03dac6
+        PG[(PostgreSQL)]
+        REDIS[(Redis Cache)]
+    end
+
+    UI --> WEB & MOBILE
+    CALC --> WEB & MOBILE & API
+    DB --> API
+    TYPES --> UI & CALC & DB
+    API --> PG & REDIS
+    PRISMA --> PG
+
+    classDef default fill:#2a2139,stroke:#bb86fc,color:#fff;

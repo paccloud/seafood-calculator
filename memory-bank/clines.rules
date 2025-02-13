@@ -1,0 +1,79 @@
+# Clines Rules for Seafood Calculator Project
+
+## Documentation Requirements
+- All functions must have JSDoc comments
+- Each module must have a README.md
+- Keep architecture decision records (ADR) up to date
+- Update API documentation for any endpoint changes
+- Maintain changelog.md
+
+## Code Standards
+- Use TypeScript for all new code
+- Follow ESLint configuration
+- Use async/await over Promises
+- Follow React hooks best practices
+- Keep components pure and functional
+- Maximum line length: 100 characters
+- Use dependency injection where possible
+
+## Testing Rules
+- 80% minimum test coverage
+- Unit tests for all business logic
+- Integration tests for API endpoints
+- E2E tests for critical user flows
+- Run tests before each commit
+- Mock external dependencies
+- Performance testing for calculations
+- Load testing for concurrent users
+
+## Security
+- No credentials in code or logs
+- Sanitize all user inputs
+- Use environment variables for secrets
+- Implement rate limiting
+- Log security events
+- Regular dependency updates
+
+## Performance
+- Cache frequently accessed data
+- Optimize database queries
+- Implement proper indexing
+- Bundle size optimization
+- Lazy load components
+- Monitor response times
+
+## Error Handling
+- Custom error types in utils/errors.ts
+- Consistent error responses
+- Proper logging
+- Error boundaries in React
+- Fallback UIs for failures
+
+## Monitoring
+- Application logging
+- Performance metrics
+- Error tracking
+- User analytics
+- Database monitoring
+
+## Git Workflow
+- Use feature branches
+- Write descriptive commit messages
+- Squash commits before merging
+- Code review required for merges
+- Keep PR size manageable
+
+## Deployment
+- Use Docker containers
+- Automated CI/CD pipeline
+- Staging environment required
+- Backup strategy
+- Rollback plan
+
+## Component Guidelines
+- Single responsibility principle
+- Props type validation
+- Default prop values
+- Error boundary wrapped
+- Proper prop drilling or context
+- Accessibility compliance
