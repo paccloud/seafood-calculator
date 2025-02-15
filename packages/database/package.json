@@ -1,0 +1,21 @@
+{
+  "name": "@seafood/database",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.8.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.8.0",
+    "typescript": "^5.0.0"
+  }
+}

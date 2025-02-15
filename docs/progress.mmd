@@ -1,0 +1,61 @@
+```mermaid
+graph TD
+    subgraph "Frontend Infrastructure"
+        A[Next.js 13+ Setup] --> B[UI Component Infrastructure]
+        B --> C[Component Library Integration]
+        C -->|Added| D[Radix UI Components]
+        C -->|Added| E[Custom Card Components]
+        
+        style A fill:#90EE90
+        style B fill:#90EE90
+        style C fill:#90EE90
+        style D fill:#90EE90
+        style E fill:#90EE90
+    end
+
+    subgraph "Calculator Components"
+        F[Main Calculator Structure] --> G[Component Modularization]
+        G -->|Created| H[Calculator Form Components]
+        G -->|Created| I[Template Management]
+        H -->|Added| J[Processing Cost Form]
+        H -->|Added| K[Shipping Calculator Form]
+        H -->|Added| L[Results Display]
+        
+        style F fill:#90EE90
+        style G fill:#90EE90
+        style H fill:#90EE90
+        style I fill:#90EE90
+        style J fill:#90EE90
+        style K fill:#90EE90
+        style L fill:#90EE90
+    end
+
+    subgraph "Backend Integration"
+        M[API Service Layer] --> N[API Routes Implementation]
+        N --> O[Database Integration]
+        O --> P[Template CRUD Operations]
+        
+        style M fill:#90EE90
+        style N fill:#90EE90
+        style O fill:#90EE90
+        style P fill:#90EE90
+    end
+
+    subgraph "UI/UX Improvements"
+        Q[Modern Layout Design] --> R[Theme Support]
+        Q --> S[Responsive Design]
+        R -->|Implemented| T[Light/Dark Modes]
+        S -->|Supports| U[Desktop & Mobile]
+        
+        style Q fill:#90EE90
+        style R fill:#90EE90
+        style S fill:#90EE90
+        style T fill:#90EE90
+        style U fill:#90EE90
+    end
+
+    %% Cross-component relationships
+    B --> F
+    M --> I
+    I --> P
+```

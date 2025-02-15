@@ -1,0 +1,8 @@
+Info  - 9:56:47 AM] Connection to server got closed. Server will restart.
+true
+[Error - 9:56:47 AM] windsurf client: couldn't create connection to server.
+Error: connect ECONNREFUSED 127.0.0.1:58074
+	at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+[Error - 9:56:47 AM] Restarting server failed
+Error: connect ECONNREFUSED 127.0.0.1:58074
+	at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)

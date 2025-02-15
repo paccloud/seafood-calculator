@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Store calculation history
+model Calculation {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Input values
+  weight    Float
+  pricePerPound Float
+  
+  // Results
+  totalCost Float
+  
+  // Optional metadata
+  notes     String?
+  type      String?  // Type of seafood
+  userId    String?  // For future auth implementation
+  
+  @@index([createdAt])
+  @@index([userId])
+}
+
+// Store price configurations
+model PriceConfiguration {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  name      String   // e.g., "Salmon", "Tuna"
+  basePrice Float    // Base price per pound
+  
+  // Optional modifiers
+  processingCost Float?
+  packagingCost Float?
+  
+  isActive  Boolean  @default(true)
+  
+  @@index([name])
+  @@index([isActive])
+}
