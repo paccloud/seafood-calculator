@@ -1,6 +1,10 @@
+"use client"
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { WeightInput } from './WeightInput'
+import { PriceInput } from './PriceInput'
+import { TypeInput } from './TypeInput'
+import { ResultDisplay } from './ResultDisplay'
 
 interface CalculationResult {
   id: string
@@ -69,53 +73,21 @@ export function CalculatorForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label htmlFor="weight" className="block text-sm font-medium mb-1">
-          Weight (lbs)
-        </label>
-        <Input
-          id="weight"
-          type="number"
-          step="0.1"
-          min="0"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          placeholder="Enter weight"
-          required
-          disabled={loading}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="price" className="block text-sm font-medium mb-1">
-          Price per pound ($)
-        </label>
-        <Input
-          id="price"
-          type="number"
-          step="0.01"
-          min="0"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          placeholder="Enter price per pound"
-          required
-          disabled={loading}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="type" className="block text-sm font-medium mb-1">
-          Type of Seafood (optional)
-        </label>
-        <Input
-          id="type"
-          type="text"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          placeholder="e.g., Salmon, Tuna"
-          disabled={loading}
-        />
-      </div>
+      <WeightInput
+        weight={weight}
+        setWeight={setWeight}
+        loading={loading}
+      />
+      <PriceInput
+        price={price}
+        setPrice={setPrice}
+        loading={loading}
+      />
+      <TypeInput
+        type={type}
+        setType={setType}
+        loading={loading}
+      />
 
       {error && (
         <div className="text-sm text-destructive">
@@ -127,18 +99,7 @@ export function CalculatorForm() {
         {loading ? 'Calculating...' : 'Calculate'}
       </Button>
 
-      {result && (
-        <div className="mt-6 p-4 bg-muted rounded-lg">
-          <h3 className="font-medium mb-2">Results</h3>
-          <p className="text-2xl font-bold">${result.totalCost.toFixed(2)}</p>
-          <div className="mt-2 space-y-1 text-sm text-muted-foreground">
-            <p>Weight: {result.weight} lbs</p>
-            <p>Price per pound: ${result.pricePerPound.toFixed(2)}</p>
-            {result.type && <p>Type: {result.type}</p>}
-            <p>Calculated on: {new Date(result.createdAt).toLocaleString()}</p>
-          </div>
-        </div>
-      )}
+      <ResultDisplay result={result} />
     </form>
   )
 }

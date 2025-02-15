@@ -10,7 +10,7 @@ To get started with the Seafood Calculator, follow these steps:
 
 1.  Clone the repository: `git clone <repository_url>`
 2.  Install dependencies: `pnpm install`
-3.  Run the development server: `pnpm dev`
+3.  Run the development server: `pnpm dev`. If port 3000 is already in use, the server might run on a different port (e.g., 3001). Check the console output for the actual port number.
 
 ## Documentation
 

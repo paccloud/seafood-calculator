@@ -40,9 +40,11 @@ export async function GET() {
       orderBy: {
         createdAt: 'desc'
       }
-    })
+    });
 
-    return NextResponse.json(calculations)
+    const prices = await prisma.priceConfiguration.findMany();
+
+    return NextResponse.json({ calculations, prices });
   } catch (error) {
     console.error('Failed to fetch calculations:', error)
     return NextResponse.json(

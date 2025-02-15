@@ -6,14 +6,14 @@ import { CalculatorForm } from '@/components/features/calculator/CalculatorForm'
  */
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-4">
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-6 text-center">
         Seafood Calculator
       </h1>
-      <p className="text-muted-foreground mb-8">
+      <p className="text-muted-foreground mb-10 text-center">
         Calculate accurate seafood costs for your business
       </p>
-      <div className="bg-card p-6 rounded-lg shadow-sm">
+      <div className="bg-card p-8 rounded-xl shadow-md">
         <CalculatorForm />
       </div>
     </div>
