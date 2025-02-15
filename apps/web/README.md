@@ -8,7 +8,7 @@ The web interface for the Seafood Calculator project, built with Next.js, TypeSc
 - TypeScript
 - Tailwind CSS
 - shadcn/ui Components
-- Jest & React Testing Library
+- Jest &amp; React Testing Library
 
 ## Directory Structure
 ```
